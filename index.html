@@ -230,6 +230,40 @@
         
         
           
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
           <li class="menu-item menu-item-archives">
 
     
@@ -276,6 +310,187 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/01/Tips-for-Xcode/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Vincent Yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vincent Yang's den">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/01/Tips-for-Xcode/" class="post-title-link" itemprop="http://yoursite.com/index.html">Tips for Xcode</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-01 21:36:20 / Modified: 22:18:43" itemprop="dateCreated datePublished" datetime="2019-01-01T21:36:20+08:00">2019-01-01</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Xcode/" itemprop="url" rel="index"><span itemprop="name">Xcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Defines-by-Xcode"><a href="#Defines-by-Xcode" class="headerlink" title="Defines by Xcode"></a>Defines by Xcode</h1><ul>
+<li>${SRCROOT}: The path of ProjectName.xcodeproj.</li>
+<li>${PRODUCT_ROOT}</li>
+</ul>
+<h1 id="Breakpoints"><a href="#Breakpoints" class="headerlink" title="Breakpoints"></a>Breakpoints</h1><h2 id="Shared-Breakpoint"><a href="#Shared-Breakpoint" class="headerlink" title="Shared Breakpoint"></a>Shared Breakpoint</h2><p>Shared breakpoint is public to all project, so everyone in project will see it. Maybe if some coditions exist in project but you don’t want to execute in normal, use shared breakpoint to tell Xcode how to do. In combination with breakpoint options and automatically continuing breakpoints, this can also be very helpful to improve the general debugging experience.</p>
+<h2 id="User-Breakpoint"><a href="#User-Breakpoint" class="headerlink" title="User Breakpoint"></a>User Breakpoint</h2><p>User breakpoint is public to all project in your computer. It is useful to do some needed for all projects, e.g. set Exception Breakpoints, launch some debugging tools along with your app.</p>
+<h2 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h2><ul>
+<li><strong>UIViewAlertForUnsatisfiableConstraints</strong></li>
+<li><strong>NSKVODeallocateBreak</strong></li>
+<li><strong>UIApplicationMain</strong><br>Debugger command: e @import UIKit<br>Imports UIKit into the debugger, removing the need to cast structs in a lot of places.<br>e.g. p (CGRect)[self bounds]<br>This will remove the need to cast to CGRect.</li>
+<li><strong>-[UIViewController initWithNibName:bundle:]</strong><br>Debugger command: po $arg1<br>Prints the class of a view controller during its initialization.</li>
+<li><strong>-[UIApplication sendAction:toTarget:fromSender:forEvent:]</strong><br>Stops application when an event is delivered, such as the touch of a button. This can help figure out which message sent by the action.<br>p (SEL)$arg3 will print the selector that is invoked.<br>po $arg4 the target it is invoked on.  </li>
+<li><strong>CGPostError</strong><br>Stops when CoreGraphics generates an error message, e.g. if you accidentally put a NaN in a drawing call somewhere.</li>
+<li><strong>_NSDataReinitializationBreak</strong><br>Stops when an already initialized NSData object gets initialized again.</li>
+</ul>
+<h2 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h2><ul>
+<li><strong>Objective-C</strong><br>Debugger command: po $arg1<br>Stops when an Objective-C breakpoint is hit, printing the exception to Xcode’s console.</li>
+<li><strong>C++</strong>  </li>
+<li><strong>Swift</strong>  </li>
+<li><strong>_XCTFailureHandler</strong><br>Breaks if a unit test produces an error. If you are running unit tests and want them to break if a test encounters an error, this is what you need.</li>
+<li><strong>Open GL ES </strong>  </li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -472,12 +687,25 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
 
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">categories</span>
+                  
+                </div>
               
 
               
